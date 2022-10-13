@@ -23,12 +23,6 @@ function Home() {
         </div>
         <div className="col-md-6">
           <div className="backgroundimg"></div>
-        {/* <img style={{backgroundSize:'cover',backgroundPosition: "center", backgroundRepeat: "no-repeat"}}
-            src={photograph}
-            alt="Background"
-            height="auto%"
-            width="100%"
-          /> */}
         </div>
        
       </div>
