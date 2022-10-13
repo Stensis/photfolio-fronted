@@ -11,6 +11,8 @@ import AdminSignUp from "./Pages/AdminSignUpPage"
 import Gallery from "./Pages/GalleryPage";
 import Booking from "./Pages/BookingPage";
 import ReviewingPhoto from "./Pages/ReviewingPhotoPage";
+import ShowBooking from "./Pages/ShowBookingPage";
+
 
 // all routes to all pages present
 function App() {
@@ -26,6 +28,7 @@ function App() {
         <Route exact path="/adminSignUp" element={<AdminSignUp />}></Route>
         <Route exact path="/gallery" element={<Gallery />}></Route>
         <Route exact path="/booking" element={<Booking />}></Route>
+        <Route exact path="/showbooking" element={<ShowBooking />}></Route>
         <Route exact path="/gallery/:galleryId" element={<ReviewingPhoto />}></Route>
       </Routes>
     </Router>

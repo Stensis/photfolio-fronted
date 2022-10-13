@@ -56,6 +56,11 @@ function Navbar() {
                     Contact
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/gallery">
+                    Logout
+                  </a>
+                </li>
               </ul>
             </div>
           ) : (
