@@ -5,7 +5,7 @@ import ContactUs from "../Components/contactUsComponent";
 // contact page
 function Contact() {
   return (
-    <div style={{backgroundColor:"mint",backgroundSize:"cover"}}>
+    <div style={{backgroundColor:"pink",backgroundSize:"cover"}}>
       <Navbar />
       <ContactUs />
     </div>

@@ -23,17 +23,17 @@ function BookUs() {
         <>
           <div className="d-grid gap-2 mx-5">
             <button
-              className="btn btn-outline-success text-nowrap"
+              className="btn btn-outline-info text-nowrap"
               type="button"
               onClick={showForm}
             >
-              Book Us
+              Book Now
             </button>
           </div>
 
           <div className="d-grid gap-2">
             <button
-              className="btn btn-outline-success text-nowrap"
+              className="btn btn-outline-info text-nowrap"
               type="button"
               onClick={goToBooking}
             >

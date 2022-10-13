@@ -8,10 +8,10 @@ function Booking() {
   return (
     <div>
       <Navbar />
-      <div className="mt-4 mb-3">
+      <div className="mt-4 mb-3"style={{backgroundColor:"blur",backgroundSize:"cover"}}>
         <BookUs />
       </div>
-      <div className="container">
+      <div className="container" style={{backgroundColor:"black",backgroundSize:"cover"}}>
         <CarouseLComponent />
       </div>
     </div>

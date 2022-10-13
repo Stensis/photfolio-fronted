@@ -1,50 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
-//login form for user
-function LoginForm() {
-  const userRole = "User Login";
+// login component
+function LoginForm({ onLogin }) {
+  // declaring attributes
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function getCSRFToken() {
+    return decodeURI(document.cookie.split("=")[1]);
+  }
+  // send data to server
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("https://pure-anchorage-05380.herokuapp.com/user_login", {
+      method: "POST",
+      // credentials: "include",
+      headers: {
+        "X-CSRF-Token": getCSRFToken(),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email, password: password })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        // set is logged in to true
+        localStorage.setItem("user_id", data.id);
+        localStorage.setItem("isLoggedIn", true);
+        window.location = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+        // if  login failed
+        let failAlert = new Swal({
+          title: "Oops!",
+          text: "User not logged in!",
+          type: "error"
+        });
+        // after alert reload page
+        failAlert.then(function () {
+          window.location = "/signIn";
+        });
+      });
+  }
+
+  //login form for user
+  // const userRole = "User Login";
   return (
     <div>
-      <h4 class="card-title">{userRole}</h4>
-      <p class="card-text">
-        <form>
-          <fieldset>
-            <div class="form-group">
-              <label for="userEmail" class="form-label mt-4">
-                Email address
-              </label>
-              <input
-                type="email"
-                class="form-control"
-                id="userEmail"
-                placeholder="Email"
-              />
-            </div>
-            <div class="form-group">
-              <label for="userPassword" class="form-label mt-4">
-                Password
-              </label>
-              <input
-                type="password"
-                class="form-control"
-                id="userPassword"
-                placeholder="Password"
-              />
-            </div>
-            {/* sign-in and sign-up */}
-            <div class="d-grid gap-2 mt-3 w-25">
-              <button class="btn btn-lg btn-primary" type="button">
-                Login
-              </button>
-            </div>
-            <div class="d-grid gap-2 mt-3">
-              <button class="btn btn-lg btn-warning mt-2" type="button">
-                Don't Have an account? Create Account
-              </button>
-            </div>
-          </fieldset>
-        </form>
-      </p>
+      {/* <h4 className="card-title">{userRole}</h4>
+      <p className="card-text"> */}
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="userEmail" className="form-label mt-4">
+              Email
+            </label>
+            <input
+              className="form-control"
+              placeholder="email"
+              type="email"
+              id="userEmail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="userPassword" className="form-label mt-4">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {/* sign-in and sign-up */}
+          <div className="d-grid gap-2 mt-3 w-25">
+            <button className="btn btn-lg btn-primary" type="submit">
+              Login
+            </button>
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <button
+              className="btn btn-lg btn-warning mt-2"
+              type="button"
+              onClick={() => (window.location = "/signUp")}
+            >
+              Don't Have an account? Create Account
+            </button>
+          </div>
+        </fieldset>
+      </form>
     </div>
   );
 }

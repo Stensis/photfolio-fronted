@@ -9,7 +9,7 @@ function ContactUs() {
     YOUR_SERVICE_ID: "3637382",
     YOUR_TEMPLATE_ID:
       "https://media.istockphoto.com/vectors/blue-graphic-employee-id-card-template-stock-illustration-indonesia-vector-id1237021701?k=20&m=1237021701&s=612x612&w=0&h=tD8iV-3-STUTsH54cPH81dnTynSao7F4mglci0mWVGw=",
-    YOUR_USER_ID: "28930",
+    YOUR_USER_ID: "28930"
   };
 
   return (

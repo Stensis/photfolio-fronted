@@ -1,47 +1,73 @@
-import Carousel from "react-bootstrap/Carousel";
+import React from "react";
+import { Carousel } from "react-carousel-minimal";
 
 function CarouseLComponent() {
+  const data = [
+    {
+      image:
+        "https://i.pinimg.com/564x/19/9c/df/199cdf8d8948b2839ceb99a1d891b867.jpg",
+      caption: ""
+    },
+    {
+      image:
+        "https://i.pinimg.com/236x/7b/3a/28/7b3a283319c2d4d0a6cf4fa2990f3338.jpg",
+      caption: ""
+    },
+    {
+      image:
+        "https://i.pinimg.com/564x/f7/a9/ef/f7a9efa5ac3b60f9d5c8ec764e83f3df.jpg",
+      caption: ""
+    },
+    {
+      image:
+        "https://i.pinimg.com/564x/9b/d9/f6/9bd9f63e5f2453e6caff55c32a72f7f3.jpg",
+      caption: "Fashion that moves"
+    },
+    {
+      image:
+        "https://i.pinimg.com/750x/31/af/72/31af72d1e3c83c4973bf7f98b195bdd9.jpg",
+      caption: ""
+    },
+    {
+      image:
+        "https://i.pinimg.com/564x/fc/2a/5a/fc2a5a12f87ab32501115bc96e3c2fc9.jpg",
+      caption: ""
+    }
+  ];
+
+  const captionStyle = {
+    fontSize: "3em",
+    fontWeight: "bold",
+    width: "70%",
+    color: "pinkie",
+    marginBottom: "10px",
+    marginTop: "10px"
+  };
+
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-75"
-          src="https://cdn.mos.cms.futurecdn.net/uiCrUgVCf64TzEdTM8x9aD-1200-80.jpg"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <div className="mt-25">
+      <div style={{ textAlign: "center" }}>
+        <div style={{}}>
+          <Carousel
+            data={data}
+            time={2000}
+            width="100%"
+            height="600px"
+            captionStyle={captionStyle}
+            captionPosition="center"
+            automatic={true}
+            dots={true}
+            pauseIconColor="white"
+            pauseIconSize="40px"
+            slideImageFit="fit"
+            style={{
+              textAlign: "center",
+              maxWidth: "auto"
+            }}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
-
 export default CarouseLComponent;

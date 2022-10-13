@@ -10,9 +10,9 @@ function Login() {
       <Navbar />
 
       {/* card box */}
-      <div class="d-flex justify-content-center mt-5">
-        <div class="card border-primary mb-3" style={{ maxWidth: "40rem" }}>
-          <div class="card-body">
+      <div className="d-flex justify-content-center mt-5">
+        <div className="card border-primary mb-3" style={{ maxWidth: "40rem" }}>
+          <div className="card-body">
             {/* login form for either users */}
             <LoginForm />
           </div>

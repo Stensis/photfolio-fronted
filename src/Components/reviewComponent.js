@@ -20,26 +20,6 @@ function Review({ userId, imgId }) {
       });
   }, [imgId]);
 
-  // // show all reviews
-  // const getAllReviews = async () => {
-  //   // get reviews
-  //   let res = await fetch(`https://pure-anchorage-05380.herokuapp.com/galleries${imgId}`, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //   })
-  //   res.json().then((data) => {
-  //     setReviews(data)
-  //     console.log(data)
-  // });
-  //   let data = await res.json()
-  //   // console.log(data)
-  //   return data
-  //   // alert(reviews);
-  // };
-
-  
-
- 
   return (
     <div className="container w-50 mb-5">
       <div className="card m-4" style={{ maxWidth: "40rem" }}>

@@ -4,20 +4,7 @@ import Swal from "sweetalert2";
 
 // booking button
 function ShowBooking({ id, date, username, category }) {
-  const showAlert = (alertType, title, Message) => {
-    let cl = "alert alert-dismissible alert-" + alertType;
-    return (
-      <div className={cl}>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-        ></button>
-        <strong>{title}</strong>
-        {Message}
-      </div>
-    );
-  };
+
   // removing the booking
   const removeBooking = () => {
     fetch(`https://pure-anchorage-05380.herokuapp.com/bookings/${id}`, {

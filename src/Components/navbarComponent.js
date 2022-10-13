@@ -1,16 +1,16 @@
 import React from "react";
-import "../index.css"
-
-// components
-// import LoggedInDetails from "./loggedInDetails";
-// import UnLoggedInDetails from "./unLoggedInDetails";
+import "../index.css";
 
 // navigation bar content
 function Navbar() {
-  let isLoggedIn = true;
+  let isLoggedIn = localStorage.getItem("isLoggedIn");
+  console.log(isLoggedIn);
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark  py-3 shadow-sm">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark shadow-sm"
+        style={{ backgroundColor: "black" }}
+      >
         <div className="container">
           <button
             className="navbar-toggler"
@@ -25,12 +25,12 @@ function Navbar() {
           </button>
 
           {/* if user is logged in , show the loggedin data */}
-          {isLoggedIn === true ? (
+          {isLoggedIn ? (
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav mx-auto mb-2 mb-lg-0" >
+              <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/">
                     Home
@@ -38,12 +38,12 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/about">
-                    About
+                    About Us
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/gallery">
-                    Gallery
+                    Galleries
                   </a>
                 </li>
                 <li className="nav-item">
@@ -53,11 +53,11 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/contact">
-                    Contact
+                    Contact us
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/gallery">
+                  <a className="nav-link" href="/logout">
                     Logout
                   </a>
                 </li>
@@ -76,24 +76,24 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/about">
-                    About
+                    About us
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/contact">
-                    Contact
+                    Contact us
                   </a>
                 </li>
-                  <li className="nav-item mx-5">
-                    <a className="nav-link" href="/signIn">
-                      Login
-                    </a>
-                  </li>
-                  <li className="nav-item ">
-                    <a className="nav-link" href="/signUp">
-                      Create Account
-                    </a>
-                  </li>
+                <li className="nav-item mx-5">
+                  <a className="nav-link" href="/signIn">
+                    Login
+                  </a>
+                </li>
+                <li className="nav-item ">
+                  <a className="nav-link" href="/signUp">
+                    Create Account
+                  </a>
+                </li>
               </ul>
             </div>
           )}
