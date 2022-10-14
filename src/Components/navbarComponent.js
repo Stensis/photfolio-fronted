@@ -36,11 +36,11 @@ function Navbar() {
                     Home
                   </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link" href="/about">
                     About Us
                   </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a className="nav-link" href="/gallery">
                     Galleries
@@ -74,11 +74,11 @@ function Navbar() {
                     Home
                   </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link" href="/about">
                     About us
                   </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a className="nav-link" href="/contact">
                     Contact us

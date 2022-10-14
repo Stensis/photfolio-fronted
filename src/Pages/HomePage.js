@@ -15,8 +15,8 @@ function Home() {
         <div className="row" style={{backgroundColor:"plum"}}>
           <div className="col-md-6 px-5 mt-5">
             <h1 className="mt-5 px-5">
-              “If it excites me, <br></br>
-              there is a good chance it will make a good photograph.”
+              If it excites me, <br></br>
+              there is a good chance it will make a good photograph.
             </h1>
           </div>
           <div className="col-md-6">
