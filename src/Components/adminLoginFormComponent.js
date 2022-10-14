@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 //login form for admin
 function AdminLoginForm() {
@@ -6,19 +8,59 @@ function AdminLoginForm() {
   const userRole = "Admin  Login";
 
   // declare initial states
-  const [userEmail, setUserEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // submit data once user submits
-  const handleSubmit = () => {
-    fetch("https://pure-anchorage-05380.herokuapp.com/admins", {
+  const location = useLocation();
+  // get the pathname
+  const isAdmin = location.pathname === "/adminSignIn";
+
+  // get csrf token
+  function getCSRFToken() {
+    return decodeURI(document.cookie.split("=")[1]);
+  }
+  // send data to server
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("https://pure-anchorage-05380.herokuapp.com/admin_login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: userEmail, password_digest: password })
+      // credentials: "include",
+      headers: {
+        "X-CSRF-Token": getCSRFToken(),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email, password: password })
     })
-      .then((res) => console.log(res.json()))
-      .catch((err) => console.log(err));
-  };
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        // set is logged in to true
+        localStorage.setItem("admin_id", data.id);
+        if (isAdmin) {
+          localStorage.setItem("role", "admin");
+        } else {
+          localStorage.setItem("role", "user");
+        }
+
+        localStorage.setItem("isLoggedIn", true);
+        window.location = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+        // if  login failed
+        let failAlert = new Swal({
+          title: "Oops!",
+          text: "Admin not logged in!",
+          type: "error"
+        });
+        // after alert reload page
+        failAlert.then(function () {
+          window.location = "/adminSignIn";
+        });
+      });
+  }
+
   return (
     <div>
       <h4 className="card-title">{userRole}</h4>
@@ -34,8 +76,8 @@ function AdminLoginForm() {
                 className="form-control"
                 id="userEmail"
                 placeholder="Email"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -58,7 +100,11 @@ function AdminLoginForm() {
               </button>
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button className="btn btn-lg btn-warning mt-2" type="submit">
+              <button
+                className="btn btn-lg btn-warning mt-2"
+                type="button"
+                onClick={() => (window.location = "/adminSignUp")}
+              >
                 Don't Have an account? Create Account
               </button>
             </div>

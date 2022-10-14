@@ -41,6 +41,8 @@ function App() {
           <Route exact path="/adminSignIn" element={<AdminLogin />}></Route>
           <Route exact path="/signUp" element={<SignUp />}></Route>
           <Route exact path="/adminSignUp" element={<AdminSignUp />}></Route>
+          <Route exact path="/about" element={<About />}></Route>
+          <Route exact path="/contact" element={<Contact />}></Route>
         </Routes>
       </Router>
     );

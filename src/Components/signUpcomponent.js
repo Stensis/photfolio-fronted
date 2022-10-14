@@ -3,7 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 // creating a new user
-function SignUpUser({ setUser }) {
+function SignUpUser() {
   // declare initials
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ function SignUpUser({ setUser }) {
       body: JSON.stringify({
         username: username,
         email: email,
-        password_digest: password
+        password: password
       })
     })
       .then((response) => response.json())

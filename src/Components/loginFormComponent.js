@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 // login component
 function LoginForm({ onLogin }) {
@@ -7,6 +8,11 @@ function LoginForm({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const location = useLocation();
+  // get the pathname
+  const isAdmin = location.pathname === "/adminSignIn";
+
+  // get csrf token
   function getCSRFToken() {
     return decodeURI(document.cookie.split("=")[1]);
   }
@@ -28,6 +34,12 @@ function LoginForm({ onLogin }) {
 
         // set is logged in to true
         localStorage.setItem("user_id", data.id);
+        if (isAdmin) {
+          localStorage.setItem("role", "admin");
+        } else {
+          localStorage.setItem("role", "user");
+        }
+
         localStorage.setItem("isLoggedIn", true);
         window.location = "/";
       })

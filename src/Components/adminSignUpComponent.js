@@ -1,30 +1,72 @@
 import React from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
-function SignUpAdmin({ setAdmin }) {
+function SignUpAdmin() {
+  // declare initials
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  function handleSubmit() {
-    fetch("http://127.0.0.1:3000/admin_signup", {
+
+  // handle user registration
+  function handleSubmit(e) {
+    e.preventDefault();
+    // check matching password
+    if (password !== passwordConfirm) {
+      // if  sign up failed
+      let misMatchAlert = Swal.fire({
+        type: "error",
+        title: "Oops...",
+        text: "Passwords don't match"
+      });
+      // after alert reload page
+      misMatchAlert.then(function () {
+        window.location = "/adminSignUp";
+      });
+      return;
+    }
+
+    // send data to server
+    fetch("https://pure-anchorage-05380.herokuapp.com/admin_signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        username,
-        email,
-        password_digest: password
-        // password_confirmation: passwordConfirm
+        username: username,
+        email: email,
+        password: password
       })
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setAdmin(user));
-        alert("user saved successfully");
-      }
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // if account created successfully
+        let successAlert = new Swal({
+          title: "Success!",
+          text: "Admin saved successfully!",
+          type: "success"
+        });
+        // after successful sign up then login
+        successAlert.then(function () {
+          window.location = "/adminSignIn";
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        // if  sign up failed
+        let failAlert = new Swal({
+          title: "Oops!",
+          text: "Admin not saved!",
+          type: "error"
+        });
+        // after alert reload page
+        failAlert.then(function () {
+          window.location = "/adminSignUp";
+        });
+      });
   }
 
   return (
@@ -35,7 +77,7 @@ function SignUpAdmin({ setAdmin }) {
         <fieldset>
           <div className="form-group">
             <label htmlFor="userEmail" className="form-label mt-4">
-              Emailaddress:
+              Email:
             </label>
             <input
               type="email"
@@ -81,7 +123,7 @@ function SignUpAdmin({ setAdmin }) {
             <input
               type="password"
               className="form-control"
-              id="userPassword"
+              id="userConfirmPassword"
               value={passwordConfirm}
               placeholder="re-enter Password"
               onChange={(e) => setPasswordConfirm(e.target.value)}
