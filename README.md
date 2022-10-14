@@ -44,6 +44,8 @@ As a user of the website,you will be able to :
 * Sinatra-ActiveRecord
 * [Go Back to the top](#Photfolio-fronted)
 
+googleslides:https://docs.google.com/presentation/d/1f27cBP9Z5MgY0WjA4pq3ryRZJMd45HE3NC7Pn40J7AU/edit?usp=sharing
+
 ### Database used
 - used heroku to deploy.
 - used sqlite3 for development and postgres for production.
