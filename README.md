@@ -1,16 +1,15 @@
-# photfolio-fronted
-# CHERIE REAL ESTATES
+# PHOTFOLIO-FRONTED
 
 <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/> 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
 
 - Made by Irene with ❤️
   
-- <p>Home Page</p>
+- <p>HOME PAGE</p>
   
  <img src="./public/Screenshot from 2022-10-14 11-04-48.png"/>
 
-- <p>Users Page</p>
+- <p>PAGE BEFORE LOGIN</p>
   
  <img src="./public/Screenshot from 2022-10-14 11-05-01.png">
 
