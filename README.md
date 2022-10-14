@@ -47,7 +47,7 @@ As a user of the website,you will be able to :
 ### Database used
 - used heroku to deploy.
 - used sqlite3 for development and postgres for production.
-- the db has 3 models users,vendors and houses.
+- the db has several tables for the associations.
 - click the link below to view the live application.
 - https://backend-for-pure-anchorage-05380.herokuapp.com/
 - Github url: https://github.com/Stensis/photofolio-backend
